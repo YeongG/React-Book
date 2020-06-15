@@ -1,6 +1,8 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
-const App = () => {
+const App = (props) => {
+  console.log(props);
   return (
     <div>
       
@@ -8,4 +10,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default withRouter(App);
