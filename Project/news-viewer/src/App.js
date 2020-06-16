@@ -1,8 +1,11 @@
 import React from 'react';
+import NewsList from './NewsList';
 
 const App = () => {
   return (
-    <div></div>
+    <>
+      <NewsList /> 
+    </>
   )
 }
 export default App;
