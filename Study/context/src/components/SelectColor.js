@@ -1,16 +1,17 @@
 import React from 'react';
-import { ColorConsumer } from '../context/color';
+import ColorContext from '../context/color';
+import { useContext } from 'react';
 
 const colors = ["red","orange","yellow","green","blue","indigo","violet"];
 
 const SelectColor = () => {
+    const {actions} = useContext(ColorContext);
+    console.log("SelectColor 랜더링");
     return (
         <>
             <div>
                 <h2>색상을 선택하세요</h2>
             </div>
-            <ColorConsumer>
-            {({actions}) => (
                 <div style={{display:"flex"}}>
                     {colors.map(color => (
                         <div
@@ -21,8 +22,6 @@ const SelectColor = () => {
                         />
                     ))}
                 </div>
-            )}
-            </ColorConsumer>
         </>
     )
 }

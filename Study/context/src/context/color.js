@@ -9,6 +9,7 @@ const ColorContext = createContext({
 });
 
 const ColorProvider = ({children}) => {
+    console.log("ColorProvider 랜더링");
     const [color,setColor] = useState('black');
     const [subColor,setSubColor] = useState('red');
 
@@ -16,13 +17,12 @@ const ColorProvider = ({children}) => {
         state:{color,subColor},
         actions:{setColor,setSubColor}
     };
+
     return (
         <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
     );   
 };
 
-const {Consumer:ColorConsumer} = ColorContext;
 
-export {ColorProvider,ColorConsumer};
-
+export {ColorProvider};
 export default ColorContext;
