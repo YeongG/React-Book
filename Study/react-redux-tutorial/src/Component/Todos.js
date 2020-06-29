@@ -1,21 +1,29 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TodoItem from './TodoItem';
+import {
+    changeInput,
+    insert,
+    remove,
+    toggle
+} from '../modules/todos';
 
-const Todos = ({
-    input,
-    todos,
-    onChangeInput,
-    onInsert,
-    onToggle,
-    onRemove
-}) => {
-    console.log("Todos 랜더링");
-    const onSubmit = e => {
+const Todos = () => {
+    console.log("TODOS");
+    const { input, todos } = useSelector(state => state.todos);
+
+    const dispatch = useDispatch();
+    const onChangeInput = useCallback(input => dispatch(changeInput(input)),[dispatch]);
+    const onInsert = useCallback(text => dispatch(insert(text)),[dispatch]);
+    const onToggle = useCallback(id => dispatch(toggle(id)),[dispatch]);
+    const onRemove = useCallback(id => dispatch(remove(id)),[dispatch]);
+
+    const onChange = e => onChangeInput(e.target.value);
+    const onSubmit = useCallback(e => {
         e.preventDefault();
         onInsert(input);
         onChangeInput("");
-    }
-    const onChange = e => onChangeInput(e.target.value);
+    },[input]);
     return (
         <div>
             <form onSubmit={onSubmit}>
