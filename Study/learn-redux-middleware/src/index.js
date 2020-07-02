@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 
 
-const logger = createStore();
+const logger = createLogger();
 const store = createStore(rootReducer,applyMiddleware(logger));
 
 ReactDOM.render(
