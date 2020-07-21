@@ -1,13 +1,21 @@
-const INCREASE = "counter/INCREASE";
+import {
+    delay,
+    put,
+    takeEvery,
+    takeLatest,
+    call
+} from 'redux-saga/effects';
+
+const INCREASE = "counter/INCREASE"; 
 const DECREASE = "counter/DECREASE";
 const INCREASE_ASYNC = "counter/INCREASE_ASYNC";
 const DECREASE_ASYNC = "counter/DECREASE_ASYNC";
 
-export const increase = () => ({
+const increase = () => ({
     type:INCREASE,
 })
 
-export const decrease = () => ({
+const decrease = () => ({
     type:DECREASE,
 })
 
@@ -20,8 +28,29 @@ export const decreaseAsync = () => ({
 })
 
 function* increaseSaga(){
+    yield delay(1000);
+    yield put(increase());
 }
 
 function* decreaseSaga(){
-
+    yield delay(1000);
+    yield put(decrease());
 }
+
+export function* counterSaga(){
+    yield takeEvery(INCREASE_ASYNC,increaseSaga);
+    yield takeLatest(DECREASE_ASYNC,decreaseSaga);
+}
+
+const counterReducer = (state = 0,action) => {
+    switch(action.type) {
+        case INCREASE:
+            return ++state;
+        case DECREASE:
+            return --state;
+        default:
+            return state;
+    }
+}
+
+export default counterReducer;
