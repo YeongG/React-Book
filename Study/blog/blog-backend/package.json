@@ -8,6 +8,8 @@
     "koa-router": "^9.1.0"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "koa-bodyparser": "^4.3.0",
     "nodemon": "^2.0.4"
   }
 }
