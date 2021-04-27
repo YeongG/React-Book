@@ -1,6 +1,5 @@
 import { FC, useCallback } from "react";
 import { TodoItem } from "../../components";
-import { remove, toggle } from "../../lib/contexts/todoContext";
 import { useTodoDispatch, useTodoState } from "../../lib/hooks/useTodo";
 
 const TodoBody: FC = () => {

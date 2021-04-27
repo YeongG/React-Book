@@ -1,0 +1,14 @@
+.todo-wrap {
+  display: flex;
+}
+.todo-text {
+  flex: 1;
+  border: 1px solid black;
+}
+.todo-btn {
+  width: 60px;
+  text-align: center;
+}
+.todo-btn + .todo-btn {
+  margin-left: 10px;
+}
